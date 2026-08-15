@@ -1,59 +1,3 @@
-<!-- 
-                </div>
-                <button class="submit">Sign in</button>
-                <div class="footer">
-                    Don't have a account? <span onclick="flip()">Join now</span>
-                </div>
-            </div>
-            <!-- Sign up Form Starts -->
-            <div class="face back">
-                 <div class="header">
-                    <h2>Create Account</h2>
-                    <p>Start your journey here</p><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | SignUp</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-         <div class="card" id="card">
-            <!-- Sign in Form Starts -->
-             <div class="face front">
-                <div class="header">
-                    <h2>Welcome</h2>
-                    <p>Enter your details to continue</p>
-                </div>
-                <div class="inputs">
-
-                    <input type="email" placeholder="Email Address">
-                    <input type="password" placeholder="Password">
-                </div>
-                <div class="inputs">
-                    <input type="text" placeholder="Full name">
-                    <input type="email" placeholder="Enter email">
-                    <input type="password" placeholder="Create password">
-                </div>
-                <button class="submit">Sign Up</button>
-                <div class="footer">
-                    Already a member? <span onclick="flip()">Log in</span>
-                </div>
-            </div>
-         </div>
-    </div>
-   
-</body>
-
-<script>
-    function flip(){
-        document.getElementById('card').classList.toggle('flipped');
-    }
-</script>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,10 +17,10 @@
                     <p>Visual IoT Telemetry Platform</p>
                 </div>
                 <div class="inputs">
-                    <input type="email" placeholder="Email Address">
-                    <input type="password" placeholder="Password">
+                    <input type="email" id="email" placeholder="Email Address">
+                    <input type="password" id="password" placeholder="Password">
                 </div>
-                <button class="submit">Sign in</button>
+                <button class="submit" id="loginBtn">Sign in</button>
                 <div class="footer">
                     Don't have an account? <span onclick="flip()">Join now</span>
                 </div>
@@ -104,7 +48,10 @@
     <script>
         function flip(){
             document.getElementById('card').classList.toggle('flipped');
+
+
         }
     </script>
+    <script src="index.js"></script>
 </body>
 </html>
