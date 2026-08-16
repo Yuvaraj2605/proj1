@@ -11,3 +11,17 @@ loginBtn.addEventListener("click", function () {
 
     alert("Login successful!");
 });
+const signupBtn = document.getElementById("signupBtn");
+
+signupBtn.addEventListener("click", function () {
+    const fullName = document.getElementById("fullName").value;
+    const signupEmail = document.getElementById("signupEmail").value;
+    const signupPassword = document.getElementById("signupPassword").value;
+
+    if (fullName === "" || signupEmail === "" || signupPassword === "") {
+        alert("Please fill in all fields");
+        return;
+    }
+
+    alert("Sign up successful!");
+});
