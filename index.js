@@ -23,5 +23,23 @@ signupBtn.addEventListener("click", function () {
         return;
     }
 
-    alert("Sign up successful!");
+    fetch("http://localhost:5000/api/signup", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        fullName: fullName,
+        email: signupEmail,
+        password: signupPassword
+    })
+})
+.then(response => response.json())
+.then(data => {
+    alert(data.message);
+})
+.catch(error => {
+    console.error(error);
+    alert("Server se connect nahi ho pa raha");
+});
 });
