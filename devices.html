@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusFlow - Devices</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <aside class="sidebar">
+            <h2>NexusFlow</h2>
+
+            <nav>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="devices.html" class="active">Devices</a>
+                <a href="#">Analytics</a>
+                <a href="#">Alerts</a>
+                <a href="#">Settings</a>
+            </nav>
+
+            <button id="logoutBtn">Logout</button>
+        </aside>
+
+        <main class="main-content">
+
+            <header>
+                <h1>Devices</h1>
+                <p>Monitor and manage connected devices.</p>
+            </header>
+
+            <section class="device-section">
+
+                <div class="device">
+                    <div>
+                        <strong>Temperature Sensor</strong>
+                        <p>Device ID: NS-TEMP-001</p>
+                    </div>
+                    <span class="status">Online</span>
+                </div>
+
+                <div class="device">
+                    <div>
+                        <strong>Humidity Sensor</strong>
+                        <p>Device ID: NS-HUM-002</p>
+                    </div>
+                    <span class="status">Online</span>
+                </div>
+
+                <div class="device">
+                    <div>
+                        <strong>Motion Sensor</strong>
+                        <p>Device ID: NS-MOT-003</p>
+                    </div>
+                    <span class="offline">Offline</span>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+
+</body>
+</html>

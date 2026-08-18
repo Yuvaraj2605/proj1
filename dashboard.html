@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusFlow Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>NexusFlow</h2>
+
+            <nav>
+                <a href="#" class="active">Dashboard</a>
+                <a href="devices.html">Devices</a>
+                <a href="analytics.html">Analytics</a>
+                <a href="#">Alerts</a>
+                <a href="#">Settings</a>
+            </nav>
+
+            <button id="logoutBtn">Logout</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header>
+                <h1>Dashboard</h1>
+                <p>Welcome back!</p>
+            </header>
+
+            <!-- Summary Cards -->
+            <section class="cards">
+
+                <div class="card">
+                    <h3>Total Devices</h3>
+                    <p>12</p>
+                </div>
+
+                <div class="card">
+                    <h3>Active Devices</h3>
+                    <p>10</p>
+                </div>
+
+                <div class="card">
+                    <h3>Alerts</h3>
+                    <p>02</p>
+                </div>
+
+            </section>
+
+            <!-- Device Status -->
+            <section class="device-section">
+                <h2>Device Status</h2>
+
+                <div class="device">
+                    <span>Temperature Sensor</span>
+                    <span class="status">Online</span>
+                </div>
+
+                <div class="device">
+                    <span>Humidity Sensor</span>
+                    <span class="status">Online</span>
+                </div>
+
+                <div class="device">
+                    <span>Motion Sensor</span>
+                    <span class="offline">Offline</span>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+
+</body>
+</html>

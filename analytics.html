@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusFlow - Analytics</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <aside class="sidebar">
+            <h2>NexusFlow</h2>
+
+            <nav>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="devices.html">Devices</a>
+                <a href="analytics.html" class="active">Analytics</a>
+                <a href="#">Alerts</a>
+                <a href="#">Settings</a>
+            </nav>
+
+            <button id="logoutBtn">Logout</button>
+        </aside>
+
+        <main class="main-content">
+
+            <header>
+                <h1>Analytics</h1>
+                <p>View device performance and sensor data.</p>
+            </header>
+
+            <section class="cards">
+
+                <div class="card">
+                    <h3>Average Temperature</h3>
+                    <p>27°C</p>
+                </div>
+
+                <div class="card">
+                    <h3>Average Humidity</h3>
+                    <p>62%</p>
+                </div>
+
+                <div class="card">
+                    <h3>Device Uptime</h3>
+                    <p>98%</p>
+                </div>
+
+            </section>
+
+            <section class="device-section">
+                <h2>Recent Sensor Readings</h2>
+
+                <div class="device">
+                    <span>Temperature</span>
+                    <strong>27°C</strong>
+                </div>
+
+                <div class="device">
+                    <span>Humidity</span>
+                    <strong>62%</strong>
+                </div>
+
+                <div class="device">
+                    <span>Motion</span>
+                    <strong>Detected</strong>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+
+</body>
+</html>
