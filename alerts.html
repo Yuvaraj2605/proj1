@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexusFlow - Devices</title>
+    <title>NexusFlow - Alerts</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,9 +16,9 @@
 
             <nav>
                 <a href="dashboard.html">Dashboard</a>
-                <a href="devices.html" class="active">Devices</a>
+                <a href="devices.html">Devices</a>
                 <a href="analytics.html">Analytics</a>
-                <a href="alerts.html">Alerts</a>
+                <a href="alerts.html" class="active">Alerts</a>
                 <a href="settings.html">Settings</a>
             </nav>
 
@@ -28,34 +28,42 @@
         <main class="main-content">
 
             <header>
-                <h1>Devices</h1>
-                <p>Monitor and manage connected devices.</p>
+                <h1>Alerts</h1>
+                <p>Monitor important device notifications.</p>
             </header>
 
             <section class="device-section">
 
                 <div class="device">
                     <div>
-                        <strong>Temperature Sensor</strong>
-                        <p>Device ID: NS-TEMP-001</p>
+                        <strong>High Temperature</strong>
+                        <p>Temperature Sensor · 5 minutes ago</p>
                     </div>
-                    <span class="status">Online</span>
+                    <span class="offline">Critical</span>
                 </div>
 
                 <div class="device">
                     <div>
-                        <strong>Humidity Sensor</strong>
-                        <p>Device ID: NS-HUM-002</p>
+                        <strong>Motion Detected</strong>
+                        <p>Motion Sensor · 15 minutes ago</p>
                     </div>
-                    <span class="status">Online</span>
+                    <span class="status">Active</span>
                 </div>
 
                 <div class="device">
                     <div>
-                        <strong>Motion Sensor</strong>
-                        <p>Device ID: NS-MOT-003</p>
+                        <strong>Device Offline</strong>
+                        <p>Motion Sensor · 30 minutes ago</p>
                     </div>
-                    <span class="offline">Offline</span>
+                    <span class="offline">Warning</span>
+                </div>
+
+                <div class="device">
+                    <div>
+                        <strong>Humidity Normal</strong>
+                        <p>Humidity Sensor · 1 hour ago</p>
+                    </div>
+                    <span class="status">Resolved</span>
                 </div>
 
             </section>

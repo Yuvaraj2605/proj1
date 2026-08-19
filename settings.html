@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexusFlow - Devices</title>
+    <title>NexusFlow - Settings</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,10 +16,10 @@
 
             <nav>
                 <a href="dashboard.html">Dashboard</a>
-                <a href="devices.html" class="active">Devices</a>
+                <a href="devices.html">Devices</a>
                 <a href="analytics.html">Analytics</a>
                 <a href="alerts.html">Alerts</a>
-                <a href="settings.html">Settings</a>
+                <a href="settings.html" class="active">Settings</a>
             </nav>
 
             <button id="logoutBtn">Logout</button>
@@ -28,34 +28,36 @@
         <main class="main-content">
 
             <header>
-                <h1>Devices</h1>
-                <p>Monitor and manage connected devices.</p>
+                <h1>Settings</h1>
+                <p>Manage your account and application preferences.</p>
             </header>
 
             <section class="device-section">
 
+                <h2>Account Settings</h2>
+
                 <div class="device">
                     <div>
-                        <strong>Temperature Sensor</strong>
-                        <p>Device ID: NS-TEMP-001</p>
+                        <strong>Profile</strong>
+                        <p>Manage your name and email address.</p>
                     </div>
-                    <span class="status">Online</span>
+                    <button class="setting-btn">Edit</button>
                 </div>
 
                 <div class="device">
                     <div>
-                        <strong>Humidity Sensor</strong>
-                        <p>Device ID: NS-HUM-002</p>
+                        <strong>Notifications</strong>
+                        <p>Manage alert and notification preferences.</p>
                     </div>
-                    <span class="status">Online</span>
+                    <button class="setting-btn">Manage</button>
                 </div>
 
                 <div class="device">
                     <div>
-                        <strong>Motion Sensor</strong>
-                        <p>Device ID: NS-MOT-003</p>
+                        <strong>Security</strong>
+                        <p>Manage your password and account security.</p>
                     </div>
-                    <span class="offline">Offline</span>
+                    <button class="setting-btn">Manage</button>
                 </div>
 
             </section>
