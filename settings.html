@@ -27,6 +27,9 @@
 
         <main class="main-content">
 
+
+
+
             <header>
                 <h1>Settings</h1>
                 <p>Manage your account and application preferences.</p>
@@ -49,7 +52,24 @@
                         <strong>Notifications</strong>
                         <p>Manage alert and notification preferences.</p>
                     </div>
-                    <button class="setting-btn">Manage</button>
+                    <button class="setting-btn"id="notificationBtn">Manage</button>
+                    <div id="notificationSettings" class="settings-form" style="display: none;">
+
+    <label>
+        <input type="checkbox" id="emailNotifications">
+        Email Notifications
+    </label>
+
+    <label>
+        <input type="checkbox" id="alertNotifications">
+        Alert Notifications
+    </label>
+
+    <button id="saveNotificationBtn" class="setting-btn">
+        Save Preferences
+    </button>
+
+</div>
                 </div>
                 <div id="profileForm" class="settings-form" style="display: none;">
 
@@ -70,7 +90,23 @@
                         <strong>Security</strong>
                         <p>Manage your password and account security.</p>
                     </div>
-                    <button class="setting-btn">Manage</button>
+                    <button class="setting-btn"id="securityBtn">Manage</button>
+                    <div id="securityForm" class="settings-form" style="display: none;">
+
+    <label for="currentPassword">Current Password</label>
+    <input type="password" id="currentPassword" placeholder="Enter current password">
+
+    <label for="newPassword">New Password</label>
+    <input type="password" id="newPassword" placeholder="Enter new password">
+
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" id="confirmPassword" placeholder="Confirm new password">
+
+    <button id="changePasswordBtn" class="setting-btn">
+        Change Password
+    </button>
+
+</div>
                 </div>
 
             </section>

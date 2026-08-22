@@ -10,6 +10,7 @@ loginBtn.addEventListener("click", function () {
     }
 
     alert("Login successful!");
+    window.location.href = "dashboard.html";
 });
 const signupBtn = document.getElementById("signupBtn");
 
