@@ -35,3 +35,50 @@ if (saveProfileBtn && profileForm) {
         profileForm.style.display = "none";
     });
 }
+const notificationBtn = document.getElementById("notificationBtn");
+const notificationSettings = document.getElementById("notificationSettings");
+const saveNotificationBtn = document.getElementById("saveNotificationBtn");
+
+if (notificationBtn && notificationSettings) {
+    notificationBtn.addEventListener("click", function () {
+        notificationSettings.style.display = "block";
+    });
+}
+
+if (saveNotificationBtn) {
+    saveNotificationBtn.addEventListener("click", function () {
+        alert("Notification preferences saved!");
+        notificationSettings.style.display = "none";
+    });
+}
+const securityBtn = document.getElementById("securityBtn");
+const securityForm = document.getElementById("securityForm");
+const changePasswordBtn = document.getElementById("changePasswordBtn");
+
+if (securityBtn && securityForm) {
+    securityBtn.addEventListener("click", function () {
+        securityForm.style.display = "block";
+    });
+}
+
+if (changePasswordBtn) {
+    changePasswordBtn.addEventListener("click", function () {
+
+        const currentPassword = document.getElementById("currentPassword").value;
+        const newPassword = document.getElementById("newPassword").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (!currentPassword || !newPassword || !confirmPassword) {
+            alert("Please fill all fields");
+            return;
+        }
+
+        if (newPassword !== confirmPassword) {
+            alert("New passwords do not match");
+            return;
+        }
+
+        alert("Password changed successfully!");
+        securityForm.style.display = "none";
+    });
+}
