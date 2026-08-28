@@ -321,3 +321,141 @@ span:hover{
 .setting-btn:hover {
     opacity: 0.9;
 }
+/* =========================
+   FINAL RESPONSIVE FIXES
+   ========================= */
+
+/* Fix font-size typos */
+h2 {
+    font-size: 26px;
+}
+
+.header p {
+    font-size: 14px;
+}
+
+input {
+    font-size: 14px;
+}
+
+/* Keep dashboard cards separate from login/signup card */
+.dashboard .card {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 25px;
+    transform: none;
+    transform-style: initial;
+    transition: none;
+}
+
+/* Dashboard should use full screen */
+body:has(.dashboard) {
+    display: block;
+    height: auto;
+    min-height: 100vh;
+}
+
+/* Better dashboard layout */
+.dashboard {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .sidebar {
+        width: 200px;
+        padding: 20px 15px;
+    }
+
+    .main-content {
+        padding: 25px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    /* Login / Signup */
+    .container {
+        width: calc(100% - 30px);
+        max-width: 380px;
+        height: 500px;
+    }
+
+    .face {
+        padding: 35px 25px;
+    }
+
+    /* Dashboard */
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 15px;
+    }
+
+    .sidebar h2 {
+        margin-bottom: 15px;
+        font-size: 21px;
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .sidebar nav a {
+        padding: 9px 11px;
+        font-size: 13px;
+    }
+
+    #logoutBtn {
+        margin-top: 15px;
+    }
+
+    .main-content {
+        padding: 18px;
+    }
+
+    .main-content header h1 {
+        font-size: 25px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .dashboard .card {
+        padding: 20px;
+    }
+
+    .card p {
+        font-size: 26px;
+    }
+
+    .device-section {
+        padding: 18px;
+        margin-top: 20px;
+    }
+
+    .device {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .settings-form {
+        padding: 18px;
+    }
+}
