@@ -1,3 +1,66 @@
+// =========================
+// NexusFlow Real-Time Telemetry
+// =========================
+
+const telemetrySocket = new WebSocket("ws://localhost:5000");
+
+telemetrySocket.onopen = function () {
+    console.log("Connected to NexusFlow real-time server");
+};
+
+telemetrySocket.onmessage = function (event) {
+    const message = JSON.parse(event.data);
+
+    if (message.type === "telemetry") {
+        const data = message.data;
+
+        console.log("Live telemetry:", data);
+
+        updateDashboard(data);
+    }
+};
+
+telemetrySocket.onerror = function (error) {
+    console.log("WebSocket error:", error);
+};
+
+telemetrySocket.onclose = function () {
+    console.log("WebSocket disconnected");
+};
+
+
+// Update dashboard with live telemetry
+function updateDashboard(data) {
+
+    const temperature = document.getElementById("temperatureValue");
+    const humidity = document.getElementById("humidityValue");
+    const pressure = document.getElementById("pressureValue");
+    const rpm = document.getElementById("rpmValue");
+    const deviceId = document.getElementById("deviceIdValue");
+
+    if (temperature) {
+        temperature.textContent = ${data.temperature} °C;
+    }
+
+    if (humidity) {
+        humidity.textContent = ${data.humidity} %;
+    }
+
+    if (pressure) {
+        pressure.textContent = data.pressure;
+    }
+
+    if (rpm) {
+        rpm.textContent = data.rpm;
+    }
+
+    if (deviceId) {
+        deviceId.textContent = data.deviceId;
+    }
+}
+
+
+
 const logoutBtn = document.getElementById("logoutBtn");
 
 if (logoutBtn) {

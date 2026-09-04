@@ -3,19 +3,49 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
+const http = require("http");
+const { WebSocketServer } = require("ws");
 
 const app = express();
+
+const server = http.createServer(app);
+const wss = new WebSocketServer({ server });
 
 app.use(cors());
 app.use(express.json());
 
-// MongoDB connection
+// =========================
+// WebSocket Connection
+// =========================
+
+wss.on("connection", (ws) => {
+  console.log("Dashboard connected to WebSocket");
+
+  ws.send(
+    JSON.stringify({
+      type: "connection",
+      message: "Connected to NexusFlow real-time server"
+    })
+  );
+
+  ws.on("close", () => {
+    console.log("Dashboard disconnected");
+  });
+});
+
+// =========================
+// MongoDB Connection
+// =========================
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log("MongoDB connection error:", err));
 
+// =========================
 // User Schema
+// =========================
+
 const userSchema = new mongoose.Schema({
   fullName: {
     type: String,
@@ -32,9 +62,48 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-// User Model
 const User = mongoose.model("User", userSchema);
+// =========================
+// Alert Schema
+// =========================
+
+const alertSchema = new mongoose.Schema({
+  deviceId: {
+    type: String,
+    required: true
+  },
+  parameter: {
+    type: String,
+    required: true
+  },
+  value: {
+    type: Number,
+    required: true
+  },
+  threshold: {
+    type: Number,
+    required: true
+  },
+  severity: {
+    type: String,
+    required: true
+  },
+  message: {
+    type: String,
+    required: true
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+const Alert = mongoose.model("Alert", alertSchema);
+
+// =========================
 // Telemetry Schema
+// =========================
+
 const telemetrySchema = new mongoose.Schema({
   deviceId: {
     type: String,
@@ -62,9 +131,12 @@ const telemetrySchema = new mongoose.Schema({
   }
 });
 
-// Telemetry Model
 const Telemetry = mongoose.model("Telemetry", telemetrySchema);
+
+// =========================
 // Signup API
+// =========================
+
 app.post("/api/signup", async (req, res) => {
   try {
     const { fullName, email, password } = req.body;
@@ -83,13 +155,13 @@ app.post("/api/signup", async (req, res) => {
       });
     }
 
-const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-const newUser = new User({
-  fullName,
-  email,
-  password: hashedPassword
-});
+    const newUser = new User({
+      fullName,
+      email,
+      password: hashedPassword
+    });
 
     await newUser.save();
 
@@ -107,7 +179,10 @@ const newUser = new User({
   }
 });
 
+// =========================
 // Telemetry API
+// =========================
+
 app.post("/api/telemetry", async (req, res) => {
   try {
     const {
@@ -139,6 +214,59 @@ app.post("/api/telemetry", async (req, res) => {
     });
 
     await telemetry.save();
+    // =========================
+// Rule Engine
+// =========================
+
+let alertMessage = null;
+
+if (temperature > 70) {
+  alertMessage = {
+    deviceId,
+    parameter: "Temperature",
+    value: temperature,
+    threshold: 70,
+    severity: "High",
+    message: "Temperature exceeded safe limit"
+  };
+}
+
+if (humidity > 75) {
+  alertMessage = {
+    deviceId,
+    parameter: "Humidity",
+    value: humidity,
+    threshold: 75,
+    severity: "High",
+    message: "Humidity exceeded safe limit"
+  };
+}
+
+if (rpm > 3500) {
+  alertMessage = {
+    deviceId,
+    parameter: "RPM",
+    value: rpm,
+    threshold: 3500,
+    severity: "High",
+    message: "RPM exceeded safe limit"
+  };
+}
+
+// Send telemetry to connected dashboards
+wss.clients.forEach((client) => {
+
+    // Send telemetry to connected dashboards
+    wss.clients.forEach((client) => {
+      if (client.readyState === 1) {
+        client.send(
+          JSON.stringify({
+            type: "telemetry",
+            data: telemetry
+          })
+        );
+      }
+    });
 
     res.status(201).json({
       message: "Telemetry received",
@@ -153,7 +281,11 @@ app.post("/api/telemetry", async (req, res) => {
     });
   }
 });
-// Get latest telemetry
+
+// =========================
+// Get Latest Telemetry
+// =========================
+
 app.get("/api/telemetry/latest", async (req, res) => {
   try {
     const latestTelemetry = await Telemetry
@@ -176,7 +308,11 @@ app.get("/api/telemetry/latest", async (req, res) => {
     });
   }
 });
+
+// =========================
 // Login API
+// =========================
+
 app.post("/api/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -223,14 +359,20 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-// Test route
+// =========================
+// Test Route
+// =========================
+
 app.get("/", (req, res) => {
   res.send("NexusFlow Backend is running!");
 });
 
-// Server
+// =========================
+// Start Server
+// =========================
+
 const PORT = 5000;
 
-app.listen(PORT, () => {
-console.log(`Server running on http://localhost:${PORT}`);
+server.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
